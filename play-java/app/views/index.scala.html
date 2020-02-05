@@ -8,6 +8,7 @@
     <form method="POST" action="@routes.PersonController.addPerson()">
         @helper.CSRF.formField
         <input type="text" name="name"/>
+        <input type="number" name="age"/>
         <button>Add Person</button>
     </form>
 }

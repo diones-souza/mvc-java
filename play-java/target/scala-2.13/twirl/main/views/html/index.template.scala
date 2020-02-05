@@ -39,6 +39,7 @@ Seq[Any](format.raw/*1.34*/("""
     <form method="POST" action=""""),_display_(/*8.34*/routes/*8.40*/.PersonController.addPerson()),format.raw/*8.69*/("""">
         """),_display_(/*9.10*/helper/*9.16*/.CSRF.formField),format.raw/*9.31*/("""
         """),format.raw/*10.9*/("""<input type="text" name="name"/>
+        <input type="number" name="age"/>
         <button>Add Person</button>
     </form>
 """)))}))
@@ -57,9 +58,9 @@ Seq[Any](format.raw/*1.34*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-02-04T22:44:30.265761600
+                  DATE: 2020-02-04T23:32:18.386146600
                   SOURCE: D:/Documents/GitHub/mvc-java/play-java/app/views/index.scala.html
-                  HASH: 90acdd8b98246b9f5f250df9fb53bc96b3957ca2
+                  HASH: cfcb3b7088b9f04a30e22195bbf89db0fcf03a94
                   MATRIX: 914->1|1041->33|1071->38|1102->61|1141->63|1173->69|1236->106|1250->112|1304->146|1408->224|1422->230|1471->259|1510->272|1524->278|1559->293|1596->303
                   LINES: 27->1|32->1|34->3|34->3|34->3|35->4|35->4|35->4|35->4|39->8|39->8|39->8|40->9|40->9|40->9|41->10
                   -- GENERATED --
