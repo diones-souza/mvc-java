@@ -23,35 +23,26 @@ import play.core.j.PlayFormsMagicForJava._
 
 object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,Html,play.twirl.api.HtmlFormat.Appendable] {
 
-  /*
- * This template is called from the `index` template. This template
- * handles the rendering of the page header and body tags. It takes
- * two arguments, a `String` for the title of the page and an `Html`
- * object to insert into the body of the page.
- */
-  def apply/*7.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
+  /**/
+  def apply/*1.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*7.32*/("""
+Seq[Any](format.raw/*1.32*/("""
 
-"""),format.raw/*9.1*/("""<!DOCTYPE html>
-<html lang="en">
+"""),format.raw/*3.1*/("""<!DOCTYPE html>
+
+<html>
     <head>
-        """),format.raw/*12.62*/("""
-        """),format.raw/*13.9*/("""<title>"""),_display_(/*13.17*/title),format.raw/*13.22*/("""</title>
-        <link rel="stylesheet" media="screen" href=""""),_display_(/*14.54*/routes/*14.60*/.Assets.versioned("stylesheets/main.css")),format.raw/*14.101*/("""">
-        <link rel="shortcut icon" type="image/png" href=""""),_display_(/*15.59*/routes/*15.65*/.Assets.versioned("images/favicon.png")),format.raw/*15.104*/("""">
+        <title>"""),_display_(/*7.17*/title),format.raw/*7.22*/("""</title>
+        <link rel="shortcut icon" type="image/png" href=""""),_display_(/*8.59*/routes/*8.65*/.Assets.at("images/favicon.png")),format.raw/*8.97*/("""">
+        <script src=""""),_display_(/*9.23*/routes/*9.29*/.Assets.at("javascripts/jquery-2.2.0.min.js")),format.raw/*9.74*/("""" type="text/javascript"></script>
     </head>
     <body>
-        """),format.raw/*19.32*/("""
-        """),_display_(/*20.10*/content),format.raw/*20.17*/("""
-
-        """),format.raw/*22.9*/("""<script src=""""),_display_(/*22.23*/routes/*22.29*/.Assets.versioned("javascripts/main.js")),format.raw/*22.69*/("""" type="text/javascript"></script>
-    </body>
-</html>
-"""))
+        """),_display_(/*12.10*/content),format.raw/*12.17*/("""
+    """),format.raw/*13.5*/("""</body>
+</html>"""))
       }
     }
   }
@@ -67,11 +58,11 @@ Seq[Any](format.raw/*7.32*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-02-04T20:25:27.608138500
+                  DATE: 2020-02-04T22:44:30.293687600
                   SOURCE: D:/Documents/GitHub/mvc-java/play-java/app/views/main.scala.html
-                  HASH: 297c43a2c0686dd03703e4429a615c546cd0b2e3
-                  MATRIX: 1171->266|1296->296|1326->300|1409->408|1446->418|1481->426|1507->431|1597->494|1612->500|1675->541|1764->603|1779->609|1840->648|1905->776|1943->787|1971->794|2010->806|2051->820|2066->826|2127->866
-                  LINES: 32->7|37->7|39->9|42->12|43->13|43->13|43->13|44->14|44->14|44->14|45->15|45->15|45->15|48->19|49->20|49->20|51->22|51->22|51->22|51->22
+                  HASH: d5b8b04de572fafa4f4bc20d9cafdcbfee126ce9
+                  MATRIX: 912->1|1037->31|1067->35|1148->90|1173->95|1267->163|1281->169|1333->201|1385->227|1399->233|1464->278|1561->348|1589->355|1622->361
+                  LINES: 27->1|32->1|34->3|38->7|38->7|39->8|39->8|39->8|40->9|40->9|40->9|43->12|43->12|44->13
                   -- GENERATED --
               */
           

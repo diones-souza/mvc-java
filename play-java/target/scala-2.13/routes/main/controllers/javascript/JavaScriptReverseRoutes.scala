@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/GitHub/mvc-java/play-java/conf/routes
-// @DATE:Tue Feb 04 21:16:13 VET 2020
+// @DATE:Tue Feb 04 22:44:29 VET 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -12,16 +12,26 @@ import _root_.play.libs.F
 package controllers.javascript {
 
   // @LINE:6
-  class ReverseHomeController(_prefix: => String) {
+  class ReversePersonController(_prefix: => String) {
 
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
+    // @LINE:8
+    def getPersons: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.PersonController.getPersons",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "persons"})
+        }
+      """
+    )
+  
     // @LINE:6
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.index",
+      "controllers.PersonController.index",
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + """"})
@@ -29,9 +39,19 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:7
+    def addPerson: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.PersonController.addPerson",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "person"})
+        }
+      """
+    )
+  
   }
 
-  // @LINE:9
+  // @LINE:11
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -39,12 +59,12 @@ package controllers.javascript {
     }
 
   
-    // @LINE:9
-    def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.Assets.versioned",
+    // @LINE:11
+    def at: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Assets.at",
       """
         function(file1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + """)("file", file1)})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("file", file1)})
         }
       """
     )

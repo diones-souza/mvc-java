@@ -1,0 +1,16 @@
+[0m[[0m[31merror[0m] [0m[0mD:\Documents\GitHub\mvc-java\play-java\app\models\Person.java:5:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol: class Entity[0m
+[0m[[0m[31merror[0m] [0m[0mEntity[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Documents\GitHub\mvc-java\play-java\app\models\Person.java:3:1: package javax.persistence does not exist[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Documents\GitHub\mvc-java\play-java\app\models\Person.java:8:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   class Id[0m
+[0m[[0m[31merror[0m] [0m[0m  location: class models.Person[0m
+[0m[[0m[31merror[0m] [0m[0mId[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Documents\GitHub\mvc-java\play-java\app\models\Person.java:9:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   class GeneratedValue[0m
+[0m[[0m[31merror[0m] [0m[0m  location: class models.Person[0m
+[0m[[0m[31merror[0m] [0m[0mGeneratedValue[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Documents\GitHub\mvc-java\play-java\app\models\Person.java:9:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   variable GenerationType[0m
+[0m[[0m[31merror[0m] [0m[0m  location: class models.Person[0m
+[0m[[0m[31merror[0m] [0m[0mGenerationType[0m

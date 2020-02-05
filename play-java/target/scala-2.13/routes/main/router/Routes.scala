@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/GitHub/mvc-java/play-java/conf/routes
-// @DATE:Tue Feb 04 21:16:13 VET 2020
+// @DATE:Tue Feb 04 22:44:29 VET 2020
 
 package router
 
@@ -15,8 +15,8 @@ import _root_.play.libs.F
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:6
-  HomeController_1: controllers.HomeController,
-  // @LINE:9
+  PersonController_1: controllers.PersonController,
+  // @LINE:11
   Assets_0: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
@@ -24,15 +24,15 @@ class Routes(
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:6
-    HomeController_1: controllers.HomeController,
-    // @LINE:9
+    PersonController_1: controllers.PersonController,
+    // @LINE:11
     Assets_0: controllers.Assets
-  ) = this(errorHandler, HomeController_1, Assets_0, "/")
+  ) = this(errorHandler, PersonController_1, Assets_0, "/")
 
   def withPrefix(addPrefix: String): Routes = {
     val prefix = play.api.routing.Router.concatPrefix(addPrefix, this.prefix)
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_1, Assets_0, prefix)
+    new Routes(errorHandler, PersonController_1, Assets_0, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -40,8 +40,10 @@ class Routes(
   }
 
   def documentation = List(
-    ("""GET""", this.prefix, """controllers.HomeController.index"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
+    ("""GET""", this.prefix, """controllers.PersonController.index(req:Request)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """person""", """controllers.PersonController.addPerson(req:Request)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """persons""", """controllers.PersonController.getPersons()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.at(path:String = "/public", file:String)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -50,34 +52,74 @@ class Routes(
 
 
   // @LINE:6
-  private[this] lazy val controllers_HomeController_index0_route = Route("GET",
+  private[this] lazy val controllers_PersonController_index0_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix)))
   )
-  private[this] lazy val controllers_HomeController_index0_invoker = createInvoker(
-    HomeController_1.index,
+  private[this] lazy val controllers_PersonController_index0_invoker = createInvoker(
+    
+    (req:play.mvc.Http.Request) =>
+      PersonController_1.index(fakeValue[play.mvc.Http.Request]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.HomeController",
+      "controllers.PersonController",
       "index",
-      Nil,
+      Seq(classOf[play.mvc.Http.Request]),
       "GET",
       this.prefix + """""",
-      """ An example controller showing a sample home page""",
+      """ Home page""",
       Seq()
     )
   )
 
-  // @LINE:9
-  private[this] lazy val controllers_Assets_versioned1_route = Route("GET",
+  // @LINE:7
+  private[this] lazy val controllers_PersonController_addPerson1_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("person")))
+  )
+  private[this] lazy val controllers_PersonController_addPerson1_invoker = createInvoker(
+    
+    (req:play.mvc.Http.Request) =>
+      PersonController_1.addPerson(fakeValue[play.mvc.Http.Request]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.PersonController",
+      "addPerson",
+      Seq(classOf[play.mvc.Http.Request]),
+      "POST",
+      this.prefix + """person""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:8
+  private[this] lazy val controllers_PersonController_getPersons2_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("persons")))
+  )
+  private[this] lazy val controllers_PersonController_getPersons2_invoker = createInvoker(
+    PersonController_1.getPersons(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.PersonController",
+      "getPersons",
+      Nil,
+      "GET",
+      this.prefix + """persons""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:11
+  private[this] lazy val controllers_Assets_at3_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned1_invoker = createInvoker(
-    Assets_0.versioned(fakeValue[String], fakeValue[Asset]),
+  private[this] lazy val controllers_Assets_at3_invoker = createInvoker(
+    Assets_0.at(fakeValue[String], fakeValue[String]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
-      "versioned",
-      Seq(classOf[String], classOf[Asset]),
+      "at",
+      Seq(classOf[String], classOf[String]),
       "GET",
       this.prefix + """assets/""" + "$" + """file<.+>""",
       """ Map static resources from the /public folder to the /assets URL path""",
@@ -89,15 +131,29 @@ class Routes(
   def routes: PartialFunction[RequestHeader, Handler] = {
   
     // @LINE:6
-    case controllers_HomeController_index0_route(params@_) =>
+    case controllers_PersonController_index0_route(params@_) =>
       call { 
-        controllers_HomeController_index0_invoker.call(HomeController_1.index)
+        controllers_PersonController_index0_invoker.call(
+          req => PersonController_1.index(req))
       }
   
-    // @LINE:9
-    case controllers_Assets_versioned1_route(params@_) =>
-      call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned1_invoker.call(Assets_0.versioned(path, file))
+    // @LINE:7
+    case controllers_PersonController_addPerson1_route(params@_) =>
+      call { 
+        controllers_PersonController_addPerson1_invoker.call(
+          req => PersonController_1.addPerson(req))
+      }
+  
+    // @LINE:8
+    case controllers_PersonController_getPersons2_route(params@_) =>
+      call { 
+        controllers_PersonController_getPersons2_invoker.call(PersonController_1.getPersons())
+      }
+  
+    // @LINE:11
+    case controllers_Assets_at3_route(params@_) =>
+      call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
+        controllers_Assets_at3_invoker.call(Assets_0.at(path, file))
       }
   }
 }

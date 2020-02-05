@@ -21,27 +21,34 @@ import play.api.data.Field
 import play.data._
 import play.core.j.PlayFormsMagicForJava._
 
-object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template0[play.twirl.api.HtmlFormat.Appendable] {
+object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[Http.Request,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/():play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(implicit request: Http.Request):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*1.4*/("""
+Seq[Any](format.raw/*1.34*/("""
 
 """),_display_(/*3.2*/main("Welcome to Play")/*3.25*/ {_display_(Seq[Any](format.raw/*3.27*/("""
-  """),format.raw/*4.3*/("""<h1>Welcome to Play!</h1>
-""")))}),format.raw/*5.2*/("""
-"""))
+    """),format.raw/*4.5*/("""<script type='text/javascript' src='"""),_display_(/*4.42*/routes/*4.48*/.Assets.at("javascripts/index.js")),format.raw/*4.82*/("""'></script>
+
+    <ul id="persons"></ul>
+
+    <form method="POST" action=""""),_display_(/*8.34*/routes/*8.40*/.PersonController.addPerson()),format.raw/*8.69*/("""">
+        """),_display_(/*9.10*/helper/*9.16*/.CSRF.formField),format.raw/*9.31*/("""
+        """),format.raw/*10.9*/("""<input type="text" name="name"/>
+        <button>Add Person</button>
+    </form>
+""")))}))
       }
     }
   }
 
-  def render(): play.twirl.api.HtmlFormat.Appendable = apply()
+  def render(request:Http.Request): play.twirl.api.HtmlFormat.Appendable = apply(request)
 
-  def f:(() => play.twirl.api.HtmlFormat.Appendable) = () => apply()
+  def f:((Http.Request) => play.twirl.api.HtmlFormat.Appendable) = (request) => apply(request)
 
   def ref: this.type = this
 
@@ -50,11 +57,11 @@ Seq[Any](format.raw/*1.4*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-02-04T20:25:27.581211600
+                  DATE: 2020-02-04T22:44:30.265761600
                   SOURCE: D:/Documents/GitHub/mvc-java/play-java/app/views/index.scala.html
-                  HASH: 90f748806d0d7076f3b67f2cadc417f1321de2dc
-                  MATRIX: 901->1|997->3|1027->8|1058->31|1097->33|1127->37|1184->65
-                  LINES: 27->1|32->1|34->3|34->3|34->3|35->4|36->5
+                  HASH: 90acdd8b98246b9f5f250df9fb53bc96b3957ca2
+                  MATRIX: 914->1|1041->33|1071->38|1102->61|1141->63|1173->69|1236->106|1250->112|1304->146|1408->224|1422->230|1471->259|1510->272|1524->278|1559->293|1596->303
+                  LINES: 27->1|32->1|34->3|34->3|34->3|35->4|35->4|35->4|35->4|39->8|39->8|39->8|40->9|40->9|40->9|41->10
                   -- GENERATED --
               */
           
