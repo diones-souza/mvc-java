@@ -1,5 +1,23 @@
-@(list:Object)
+@(people:List[Person])
 @main("Welcome to Play") {
-
-    <h1>@list</h1>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Idade</th>
+        </tr>
+        </thead>
+        <tbody>
+            @for(person <- people) {
+                <tr>
+                    <td>@person.id</td>
+                    <td>@person.name</td>
+                    <td>@person.age</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 }

@@ -46,7 +46,7 @@ public class PersonController extends Controller {
     public CompletionStage<Result> getPersons() {
         return personRepository
                 .list()
-                .thenApplyAsync(p -> ok(views.html.list.render(toJson(p.collect(Collectors.toList())))), ec.current());
+                .thenApplyAsync(p -> ok(views.html.list.render(p.collect(Collectors.toList()))), ec.current());
     }
 
 }
