@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:D:/Documents/GitHub/mvc-java/play-java/conf/routes
-// @DATE:Tue Feb 04 20:25:27 VET 2020
+// @DATE:Tue Feb 04 21:16:13 VET 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
