@@ -33,6 +33,7 @@ public class PersonController extends Controller {
     }
 
     public Result index(final Http.Request request) {
+
         return ok(views.html.index.render(request));
     }
 
