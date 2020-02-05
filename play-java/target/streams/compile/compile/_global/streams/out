@@ -1,4 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0mD:\Documents\GitHub\mvc-java\play-java\app\views\index.scala.html:12:107: not found: value example[0m
-[0m[[0m[31merror[0m] [0m[0m                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                                          ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
