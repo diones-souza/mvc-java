@@ -1,0 +1,4 @@
+[debug] Copy resource mappings: 
+[debug] 	(D:\Documents\GitHub\mvc-java\play-java\conf\application.conf,D:\Documents\GitHub\mvc-java\play-java\target\scala-2.13\classes\application.conf)
+[debug] 	(D:\Documents\GitHub\mvc-java\play-java\conf\logback.xml,D:\Documents\GitHub\mvc-java\play-java\target\scala-2.13\classes\logback.xml)
+[debug] 	(D:\Documents\GitHub\mvc-java\play-java\conf\routes,D:\Documents\GitHub\mvc-java\play-java\target\scala-2.13\classes\routes)
