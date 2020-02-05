@@ -32,15 +32,19 @@ object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
 Seq[Any](format.raw/*1.34*/("""
 
 """),_display_(/*3.2*/main("Welcome to Play")/*3.25*/ {_display_(Seq[Any](format.raw/*3.27*/("""
-    """),format.raw/*4.5*/("""<script type='text/javascript' src='"""),_display_(/*4.42*/routes/*4.48*/.Assets.at("javascripts/index.js")),format.raw/*4.82*/("""'></script>
+    """),format.raw/*4.5*/("""<script type='text/javascript'></script>
 
     <ul id="persons"></ul>
 
-    <form method="POST" action=""""),_display_(/*8.34*/routes/*8.40*/.PersonController.addPerson()),format.raw/*8.69*/("""">
+    <form method="POST" action=""""),_display_(/*8.34*/routes/*8.40*/.PersonController.addPerson()),format.raw/*8.69*/("""" class="form-inline">
         """),_display_(/*9.10*/helper/*9.16*/.CSRF.formField),format.raw/*9.31*/("""
-        """),format.raw/*10.9*/("""<input type="text" name="name"/>
-        <input type="number" name="age"/>
-        <button>Add Person</button>
+            """),format.raw/*10.13*/("""<div class="form-group mb-2">
+                <input type="text" class="form-control" name="name" placeholder="Nome">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="number" class="form-control" name="age" placeholder="Idade">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Salvar</button>
     </form>
 """)))}))
       }
@@ -58,11 +62,11 @@ Seq[Any](format.raw/*1.34*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-02-04T23:32:18.386146600
+                  DATE: 2020-02-05T01:49:41.624681800
                   SOURCE: D:/Documents/GitHub/mvc-java/play-java/app/views/index.scala.html
-                  HASH: cfcb3b7088b9f04a30e22195bbf89db0fcf03a94
-                  MATRIX: 914->1|1041->33|1071->38|1102->61|1141->63|1173->69|1236->106|1250->112|1304->146|1408->224|1422->230|1471->259|1510->272|1524->278|1559->293|1596->303
-                  LINES: 27->1|32->1|34->3|34->3|34->3|35->4|35->4|35->4|35->4|39->8|39->8|39->8|40->9|40->9|40->9|41->10
+                  HASH: 6e426d4824bc0bd992bc2296bd804e648330d781
+                  MATRIX: 914->1|1041->33|1071->38|1102->61|1141->63|1173->69|1306->176|1320->182|1369->211|1428->244|1442->250|1477->265|1519->279
+                  LINES: 27->1|32->1|34->3|34->3|34->3|35->4|39->8|39->8|39->8|40->9|40->9|40->9|41->10
                   -- GENERATED --
               */
           
