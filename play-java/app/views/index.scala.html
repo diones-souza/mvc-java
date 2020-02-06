@@ -1,7 +1,15 @@
-@(implicit request: Http.Request)
+@(implicit request: Http.Request, mgs: String)
 @main("Welcome to Play") {
+@if(mgs){
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>@mgs</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+}
 <div class="card">
-    <h5 class="card-header">Cadastrar novo registro</h5>
+    <h5 class="card-header text-white bg-primary">Cadastrar novo registro</h5>
     <div class="card-body">
         <form method="POST" action="@routes.PersonController.addPerson()">
             @helper.CSRF.formField

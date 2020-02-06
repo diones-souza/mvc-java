@@ -4,9 +4,8 @@ import models.Person;
 import models.PersonRepository;
 import play.data.FormFactory;
 import play.libs.concurrent.HttpExecutionContext;
-import play.mvc.Controller;
-import play.mvc.Http;
-import play.mvc.Result;
+import play.mvc.*;
+import views.html.*;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
@@ -33,20 +32,20 @@ public class PersonController extends Controller {
     }
 
     public Result index(final Http.Request request) {
-        return ok(views.html.index.render(request));
+        return ok(index.render(request,""));
     }
 
     public CompletionStage<Result> addPerson(final Http.Request request) {
         Person person = formFactory.form(Person.class).bindFromRequest(request).get();
         return personRepository
                 .add(person)
-                .thenApplyAsync(p -> redirect(routes.PersonController.index()), ec.current());
+                .thenApplyAsync(p -> ok(index.render(request,"Registro Salvo")), ec.current());
     }
 
-    public CompletionStage<Result> getPersons() {
+    public CompletionStage<Result> getPeople() {
         return personRepository
                 .list()
-                .thenApplyAsync(p -> ok(views.html.list.render(p.collect(Collectors.toList()))), ec.current());
+                .thenApplyAsync(p -> ok(list.render(p.collect(Collectors.toList()))), ec.current());
     }
 
 }

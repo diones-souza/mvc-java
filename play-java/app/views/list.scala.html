@@ -1,23 +1,28 @@
 @(people:List[Person])
 @main("Welcome to Play") {
-<div class="table-responsive">
-    <table class="table table-striped table-bordered">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Idade</th>
-        </tr>
-        </thead>
-        <tbody>
-            @for(person <- people) {
+<div class="card">
+    <h5 class="card-header text-white bg-primary">Lista dos registros</h5>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-borderless table-hover">
+                <thead class="shadow-sm">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Idade</th>
+                </tr>
+                </thead>
+                <tbody>
+                @for(person <- people) {
                 <tr>
                     <td>@person.id</td>
                     <td>@person.name</td>
                     <td>@person.age</td>
                 </tr>
-            }
-        </tbody>
-    </table>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 }
