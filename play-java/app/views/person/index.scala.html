@@ -11,7 +11,7 @@
 <div class="card">
     <h5 class="card-header text-white bg-primary">Cadastrar novo registro</h5>
     <div class="card-body">
-        <form method="POST" action="@routes.PersonController.addPerson()">
+        <form method="POST" action="/">
             @helper.CSRF.formField
             <div class="form-group">
                 <label>Nome</label>

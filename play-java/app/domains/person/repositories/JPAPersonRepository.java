@@ -1,5 +1,7 @@
-package models;
+package domains.person.repositories;
 
+import domains.person.models.DatabaseExecutionContext;
+import domains.person.models.Person;
 import play.db.jpa.JPAApi;
 
 import javax.inject.Inject;

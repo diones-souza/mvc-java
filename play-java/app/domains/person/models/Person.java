@@ -1,4 +1,4 @@
-package models;
+package domains.person.models;
 
 import javax.persistence.*;
 

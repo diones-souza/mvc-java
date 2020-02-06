@@ -1,17 +1,15 @@
-package controllers;
+package domains.person.controllers;
 
-import models.Person;
-import models.PersonRepository;
+import domains.person.models.Person;
+import domains.person.repositories.PersonRepository;
 import play.data.FormFactory;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.*;
-import views.html.*;
+import views.html.person.*;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
-
-import static play.libs.Json.toJson;
 
 /**
  * The controller keeps all database operations behind the repository, and uses

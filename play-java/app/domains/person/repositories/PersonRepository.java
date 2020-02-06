@@ -1,6 +1,7 @@
-package models;
+package domains.person.repositories;
 
 import com.google.inject.ImplementedBy;
+import domains.person.models.Person;
 
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;

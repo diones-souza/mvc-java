@@ -3,9 +3,9 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.PersonController.index(req: Request)
-POST    /                           controllers.PersonController.addPerson(req: Request)
-GET     /people                     controllers.PersonController.getPeople()
+GET     /                           domains.person.controllers.PersonController.index(req: Request)
+POST    /                           domains.person.controllers.PersonController.addPerson(req: Request)
+GET     /people                     domains.person.controllers.PersonController.getPeople()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
