@@ -1,23 +1,30 @@
 @(people:List[domains.person.models.Person])
 @main("Listar registros") {
 <div class="card">
-    <h5 class="card-header text-white bg-primary">Listar pessoas</h5>
+    <h5 class="card-header text-white bg-primary animated fadeInDown">Listar pessoas</h5>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-borderless table-hover">
                 <thead class="shadow-sm">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Idade</th>
+                    <th class="text-center" scope="col">#</th>
+                    <th class="text-center" scope="col">Nome</th>
+                    <th class="text-center" scope="col">Idade</th>
+                    <th class="text-center" scope="col">Ações</th>
                 </tr>
                 </thead>
                 <tbody>
                 @for(person <- people) {
                 <tr>
-                    <td>@person.id</td>
-                    <td>@person.name</td>
-                    <td>@person.age</td>
+                    <td class="text-center">@person.id</td>
+                    <td class="text-center">@person.name</td>
+                    <td class="text-center">@person.age</td>
+                    <td class="text-center">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-secondary">Editar</button>
+                            <button type="button" class="btn btn-outline-danger">Excluir</button>
+                        </div>
+                    </td>
                 </tr>
                 }
                 </tbody>
