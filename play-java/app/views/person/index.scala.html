@@ -1,5 +1,5 @@
 @(implicit request: Http.Request, mgs: String)
-@main("Welcome to Play") {
+@main("Novo registro") {
 @if(mgs){
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>@mgs</strong>
@@ -9,7 +9,7 @@
 </div>
 }
 <div class="card">
-    <h5 class="card-header text-white bg-primary">Cadastrar Pessoa</h5>
+    <h5 class="card-header text-white bg-primary">Cadastrar pessoa</h5>
     <div class="card-body">
         <form method="POST" action="/">
             @helper.CSRF.formField
