@@ -3,8 +3,10 @@
 # ~~~~
 
 # Home page
-GET     /                           domains.person.controllers.PersonController.index(req: Request)
-POST    /                           domains.person.controllers.PersonController.addPerson(req: Request)
+GET     /                           domains.person.controllers.PersonController.index(req: Request, message="": String)
+POST    /                           domains.person.controllers.PersonController.create(req: Request)
+GET    /edit/:id                    domains.person.controllers.PersonController.edit(req: Request,id: Long)
+PUT    /update                      domains.person.controllers.PersonController.update(req: Request)
 GET     /people                     domains.person.controllers.PersonController.getPeople()
 
 # Map static resources from the /public folder to the /assets URL path
