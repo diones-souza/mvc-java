@@ -9,6 +9,7 @@ import views.html.person.*;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
+import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
 /**
@@ -29,29 +30,41 @@ public class PersonController extends Controller {
         this.ec = ec;
     }
 
-    public Result index(final Http.Request request, String message) {
-        return ok(index.render(request,message));
+    public Result index(final Http.Request request) {
+        return ok(index.render(request,null));
     }
 
-    public Result edit(final Http.Request request, Long id) {
-        return ok(index.render(request,""));
+    public Result index(final Http.Request request, String message) {
+        return ok(index.render(request,message));
     }
 
     public CompletionStage<Result> create(final Http.Request request) {
         Person person = formFactory.form(Person.class).bindFromRequest(request).get();
         return personRepository
-                .add(person)
+                .create(person)
                 .thenApplyAsync(p -> this.index(request,"Registro salvo"), ec.current());
     }
 
-    public Result update(final Http.Request request) {
+    public CompletionStage<Result> edit(final Http.Request request, Long id) {
+        return personRepository
+                .findOnePerson(id)
+                .thenApplyAsync(p -> ok(p.name), ec.current());
+    }
+
+    public Result update(final Http.Request request, Long id) {
         return ok(index.render(request,"teste"));
     }
 
-    public CompletionStage<Result> getPeople() {
+    public CompletionStage<Result> getPeople(final Http.Request request) {
         return personRepository
                 .list()
-                .thenApplyAsync(p -> ok(list.render(p.collect(Collectors.toList()))), ec.current());
+                .thenApplyAsync(p -> ok(list.render(request, p.collect(Collectors.toList()))), ec.current());
+    }
+
+    public CompletionStage<Result> destroy(final Http.Request request, Long id) {
+        return personRepository
+                .destroy(id)
+                .thenApplyAsync(p -> redirect("/people"), ec.current());
     }
 
 }

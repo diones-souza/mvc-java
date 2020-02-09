@@ -12,7 +12,11 @@ import java.util.stream.Stream;
 @ImplementedBy(JPAPersonRepository.class)
 public interface PersonRepository {
 
-    CompletionStage<Person> add(Person person);
+    CompletionStage<Person> create(Person person);
 
     CompletionStage<Stream<Person>> list();
+
+    CompletionStage<Person> findOnePerson(Long id);
+
+    CompletionStage<Person> destroy(Long id);
 }

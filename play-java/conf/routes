@@ -2,12 +2,13 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                           domains.person.controllers.PersonController.index(req: Request, message="": String)
-POST    /                           domains.person.controllers.PersonController.create(req: Request)
-GET    /edit/:id                    domains.person.controllers.PersonController.edit(req: Request,id: Long)
-PUT    /update                      domains.person.controllers.PersonController.update(req: Request)
-GET     /people                     domains.person.controllers.PersonController.getPeople()
+# Person CRUD
+GET    /                           domains.person.controllers.PersonController.index(req: Request)
+POST   /                           domains.person.controllers.PersonController.create(req: Request)
+GET    /$id<[0-9]+>                domains.person.controllers.PersonController.edit(req: Request, id: Long)
+PUT    /$id<[0-9]+>                domains.person.controllers.PersonController.update(req: Request, id: Long)
+GET    /people                     domains.person.controllers.PersonController.getPeople(req: Request)
+POST   /$id<[0-9]+>                domains.person.controllers.PersonController.destroy(req: Request, id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file              controllers.Assets.at(path="/public", file)

@@ -7,6 +7,7 @@ import play.db.jpa.JPAApi;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.io.*;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -28,8 +29,8 @@ public class JPAPersonRepository implements PersonRepository {
     }
 
     @Override
-    public CompletionStage<Person> add(Person person) {
-        return supplyAsync(() -> wrap(em -> insert(em, person)), executionContext);
+    public CompletionStage<Person> create(Person person) {
+        return supplyAsync(() -> wrap(em -> save(em, person)), executionContext);
     }
 
     @Override
@@ -37,17 +38,48 @@ public class JPAPersonRepository implements PersonRepository {
         return supplyAsync(() -> wrap(em -> list(em)), executionContext);
     }
 
+    public CompletionStage<Person> findOnePerson(Long id) {
+        return supplyAsync(() -> wrap(em -> findOne(em, id)), executionContext);
+    }
+
+    public CompletionStage<Person> destroy(Long id) {
+        return supplyAsync(() -> wrap(em -> delete(em, id)), executionContext);
+    }
+
     private <T> T wrap(Function<EntityManager, T> function) {
         return jpaApi.withTransaction(function);
     }
 
-    private Person insert(EntityManager em, Person person) {
-        em.persist(person);
+    private Person save(EntityManager em, Person person) {
+        try {
+            if (person.id == null) {
+                em.persist(person);
+            } else {
+                if (!em.contains(person)) {
+                    if (em.find(Person.class, person.id) == null) {
+                        throw new Exception("Erro ao atualizar o registro");
+                    }
+                }
+                person = em.merge(person);
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
         return person;
     }
 
     private Stream<Person> list(EntityManager em) {
         List<Person> persons = em.createQuery("select p from Person p", Person.class).getResultList();
         return persons.stream();
+    }
+
+    private Person findOne(EntityManager em, Long id) {
+        return em.find(Person.class, id);
+    }
+
+    private Person delete(EntityManager em, Long id) {
+        Person person = findOne(em,id);
+        em.remove(person);
+        return person;
     }
 }
