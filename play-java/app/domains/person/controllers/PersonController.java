@@ -1,8 +1,10 @@
 package domains.person.controllers;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import domains.person.models.Person;
 import domains.person.repositories.PersonRepository;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.*;
 import views.html.person.*;
@@ -32,25 +34,20 @@ public class PersonController extends Controller {
 
     public Result index(final Http.Request request) {
         Person person = formFactory.form(Person.class).bindFromRequest(request).get();
-        return ok(index.render(request,null,person));
-    }
-
-    public Result index(final Http.Request request, String message) {
-        Person person = formFactory.form(Person.class).bindFromRequest(request).get();
-        return ok(index.render(request,message,person));
+        return ok(index.render(request,person));
     }
 
     public CompletionStage<Result> create(final Http.Request request) {
         Person person = formFactory.form(Person.class).bindFromRequest(request).get();
         return personRepository
                 .create(person)
-                .thenApplyAsync(p -> this.index(request,"Registro salvo"), ec.current());
+                .thenApplyAsync(p -> ok(Json.toJson(p)), ec.current());
     }
 
     public CompletionStage<Result> edit(final Http.Request request, Long id) {
         return personRepository
                 .findOnePerson(id)
-                .thenApplyAsync(p -> ok(index.render(request,"",p)), ec.current());
+                .thenApplyAsync(p -> ok(Json.toJson(p)), ec.current());
     }
 
     public CompletionStage<Result> getPeople(final Http.Request request) {
@@ -62,7 +59,7 @@ public class PersonController extends Controller {
     public CompletionStage<Result> destroy(final Http.Request request, Long id) {
         return personRepository
                 .destroy(id)
-                .thenApplyAsync(p -> redirect("/people"), ec.current());
+                .thenApplyAsync(p -> ok(Json.toJson(p)), ec.current());
     }
 
 }
