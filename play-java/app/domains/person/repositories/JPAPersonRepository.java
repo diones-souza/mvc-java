@@ -69,8 +69,8 @@ public class JPAPersonRepository implements PersonRepository {
     }
 
     private Stream<Person> list(EntityManager em) {
-        List<Person> persons = em.createQuery("select p from Person p", Person.class).getResultList();
-        return persons.stream();
+        List<Person> people = em.createQuery("select p from Person p", Person.class).getResultList();
+        return people.stream();
     }
 
     private Person findOne(EntityManager em, Long id) {

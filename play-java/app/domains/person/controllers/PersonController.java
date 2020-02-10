@@ -31,11 +31,13 @@ public class PersonController extends Controller {
     }
 
     public Result index(final Http.Request request) {
-        return ok(index.render(request,null));
+        Person person = formFactory.form(Person.class).bindFromRequest(request).get();
+        return ok(index.render(request,null,person));
     }
 
     public Result index(final Http.Request request, String message) {
-        return ok(index.render(request,message));
+        Person person = formFactory.form(Person.class).bindFromRequest(request).get();
+        return ok(index.render(request,message,person));
     }
 
     public CompletionStage<Result> create(final Http.Request request) {
@@ -48,11 +50,7 @@ public class PersonController extends Controller {
     public CompletionStage<Result> edit(final Http.Request request, Long id) {
         return personRepository
                 .findOnePerson(id)
-                .thenApplyAsync(p -> ok(p.name), ec.current());
-    }
-
-    public Result update(final Http.Request request, Long id) {
-        return ok(index.render(request,"teste"));
+                .thenApplyAsync(p -> ok(index.render(request,"",p)), ec.current());
     }
 
     public CompletionStage<Result> getPeople(final Http.Request request) {

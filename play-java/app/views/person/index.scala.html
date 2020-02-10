@@ -1,4 +1,4 @@
-@(implicit request: Http.Request, message: String)
+@(implicit request: Http.Request, message: String, person: domains.person.models.Person)
 @main("Novo registro") {
 @if(message){
 <div class="alert alert-success alert-dismissible fade show animated zoomIn" role="alert">
@@ -14,12 +14,17 @@
         <form method="POST" action="/">
             @helper.CSRF.formField
             <div class="form-group">
+                <label>Código</label>
+                <input type="text" name="id" value="@person.id" class="form-control" hidden>
+                <input type="text" name="id" value="@person.id" class="form-control" disabled>
+            </div>
+            <div class="form-group">
                 <label>Nome</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" value="@person.name" class="form-control">
             </div>
             <div class="form-group">
                 <label>Idade</label>
-                <input type="number" name="age" class="form-control">
+                <input type="number" name="age" value="@person.age" class="form-control">
             </div>
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Salvar</button>
