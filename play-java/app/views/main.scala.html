@@ -17,8 +17,43 @@
         <script src="@routes.Assets.at("fontawesome/js/all.min.js")"></script>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="@routes.Assets.at("images/play.png")"" width="30" height="40" class="d-inline-block align-center">
+                Play
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li id="register" class="nav-item">
+                        <a class="nav-link" href="/">Cadastro </a>
+                    </li>
+                    <li id="list" class="nav-item">
+                        <a class="nav-link" href="/people">Listar </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="container mt-4">
             @content
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+		let host = location.pathname
+		host = host.replace('/','')
+		if(host == '' || !isNaN(host)){
+			$("#register").addClass("active")
+			$("#list").removeClass("active")
+		}else{
+			if(host == 'people'){
+				$("#list").addClass("active")
+				$("#register").removeClass("active")
+			}
+		}
+	});
+</script>

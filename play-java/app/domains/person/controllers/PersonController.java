@@ -47,7 +47,7 @@ public class PersonController extends Controller {
     public CompletionStage<Result> edit(final Http.Request request, Long id) {
         return personRepository
                 .findOnePerson(id)
-                .thenApplyAsync(p -> ok(Json.toJson(p)), ec.current());
+                .thenApplyAsync(p -> ok(index.render(request,p)), ec.current());
     }
 
     public CompletionStage<Result> getPeople(final Http.Request request) {

@@ -64,57 +64,57 @@
 <script type="text/javascript">
 
 	$(document).ready(function () {
-		document.getElementById('progressBar').style.display = "none";
+		document.getElementById('progressBar').style.display = "none"
 	});
 
 	$('#barProgress').click(function () {
-		document.getElementById('progressBar').style.display = "inline";
+		document.getElementById('progressBar').style.display = "inline"
 	});
 
 	(function() {
 
-		var bar = $('.bar');
-		var percent = $('.percent');
-		var status = $('#status');
-		var nameFile = '';
+		var bar = $('.bar')
+		var percent = $('.percent')
+		var status = $('#status')
+		var nameFile = ''
 		$('form').ajaxForm({
 			beforeSend: function() {
-				status.empty();
-				var percentVal = '0%';
+				status.empty()
+				var percentVal = '0%'
 				bar.width(percentVal)
-				percent.html(percentVal);
+				percent.html(percentVal)
 			},
 			uploadProgress: function(event, position, total, percentComplete) {
-				var percentVal = percentComplete + '%';
+				var percentVal = percentComplete + '%'
 				bar.width(percentVal)
-				percent.html(percentVal);
+				percent.html(percentVal)
 			},
 			success: function(data) {
-				var percentVal = '100%';
-				nameFile = data;
+				var percentVal = '100%'
+				nameFile = data
 				bar.width(percentVal)
-				percent.html(percentVal);
+				percent.html(percentVal)
 
 			},
 			complete: function(xhr) {
 			    setTimeout(function(){
-                   document.getElementById('progressBar').style.display = "none";
-                },1300);
+                   document.getElementById('progressBar').style.display = "none"
+                },1300)
 			    if(xhr.status < 400){
-			        $('.alert-success strong').empty();
-                    $('.alert-success').removeClass('d-none');
-                    $(".alert-success strong").append("Registro excluido.");
+			        $('.alert-success strong').empty()
+                    $('.alert-success').removeClass('d-none')
+                    $(".alert-success strong").append("Registro excluido.")
                     setTimeout(function(){
-                        $('.alert-success').addClass('d-none');
-                        window.location.href = "/people";
-                    },3000);
+                        $('.alert-success').addClass('d-none')
+                        window.location.href = "/people"
+                    },3000)
                 }else {
-                    $('.alert-danger strong').empty();
-                    $('.alert-danger').removeClass('d-none');
-                    $(".alert-danger strong").append("Erro ao excluir registro.");
+                    $('.alert-danger strong').empty()
+                    $('.alert-danger').removeClass('d-none')
+                    $(".alert-danger strong").append("Erro ao excluir registro.")
                     setTimeout(function(){
-                        $('.alert-danger').addClass('d-none');
-                    },3000);
+                        $('.alert-danger').addClass('d-none')
+                    },3000)
                 }
 			}
 		});
